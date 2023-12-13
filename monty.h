@@ -36,7 +36,7 @@ typedef struct instruction_s
 } instruction_t;
 
 
-void push(stack_t **stack,int data);
+void push(int data);
 
 
 #endif
