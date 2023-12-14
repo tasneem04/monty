@@ -24,6 +24,7 @@ extern stack_t *head;
 
 void push(int data);
 void pall();
+void pint(stack_t **stack, unsigned int line_number);
 
 /**
  * struct instruction_s - opcode and its function
