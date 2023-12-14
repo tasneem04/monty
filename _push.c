@@ -1,5 +1,10 @@
 #include "monty.h"
-
+/**
+ * _push - function that pushes an element to the stack.
+ * @newNode: double pointer to the want to add to head of stack.
+ * @head: douple pointer that point the first node of the stack.
+ * Return: No return.
+ * */
 stack_t *head = NULL;
 void push(int data)
 {
