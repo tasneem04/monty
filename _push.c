@@ -1,7 +1,8 @@
 #include "monty.h"
 
 void push(int data)
-{	stack_t *top = malloc(sizeof(stack_t));
+{
+	stack_t *head = NULL;
 	stack_t *newNode = malloc(sizeof(stack_t));
 	if(newNode == NULL){
 		fprintf(stderr, "Memory allocation failed\n");
@@ -9,10 +10,10 @@ void push(int data)
 	}
 	newNode->n = data;
 	newNode->prev = NULL;
-	newNode->next = top;
-	if (top != NULL)
+	newNode->next = head;
+	if (head != NULL)
 	{
-        top->prev = newNode;
+        head->prev = newNode;
 	}
-	top = newNode;
+	head = newNode;
 }
