@@ -3,7 +3,7 @@ void pall()
 {	
 	stack_t *pointer = NULL;
 	if(head == NULL)
-		printf("Linked List is empty");
+		printf(" ");
 	pointer = head;
 	while (pointer != NULL)
 	{	printf("%i\n",pointer->n);

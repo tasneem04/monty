@@ -5,5 +5,6 @@ int main()
     push(2);
     push(3);
     
+    pall();
     return 0;
 }
