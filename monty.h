@@ -20,8 +20,7 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
  
-extern stack_t *head;
-extern stack_t *pointer;
+extern  stack_t *head;
 
 /**
  * struct instruction_s - opcode and its function
