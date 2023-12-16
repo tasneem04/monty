@@ -8,11 +8,12 @@
 
 int main(int argc, char *argv[])
 {	
-    ssize_t opcode;	
+    int integerValue;
     unsigned int line_number;
     FILE *file;
     char *line;
     size_t len;
+    char *token;
     (void) argv;
 
     if(argc != 2)
@@ -32,21 +33,33 @@ int main(int argc, char *argv[])
     len = 0;
     line_number = 0;
 
-    while ((opcode = getline(&line, &len, file)) != -1)
+    while ((getline(&line, &len, file)) != -1)
     {
-        line_number++;
-	if(strstr(line, "push") != NULL)
+       	if(strstr(line, "push") != NULL)
 	{
-		push(3);
+	
+		token = (strtok(line," "));
+		while(token != NULL)
+		{
+		integerValue = atoi(token);
+		push(integerValue);
+		token = strtok(NULL, "");
+	
+		}
 	}
 	else if(strstr(line, "pall") != NULL)
 	{
 		pall();
 	}
+	else if(strstr(line,"pint") != NULL)
+	{
+		pint();
+	}
 	else 
 	{
 		printf("wrong opcode");
 	}
+	line_number++;
     }
     
     free(line);
