@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 		{
 		 if (strcmp(token, "push") != 0) {
                     integerValue = atoi(token);
-		    if(isdigit(integerValue))
+		    if(isdigit(integerValue) == 0)
 		    {
                     push(integerValue);
 		    }
