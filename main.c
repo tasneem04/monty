@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 	}
 	else if(strstr(line,"pint") != NULL)
 	{
-		pint();
+	
 	}
 	else 
 	{
