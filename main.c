@@ -36,16 +36,17 @@ int main(int argc, char *argv[])
     while ((getline(&line, &len, file)) != -1)
     {
        	if(strstr(line, "push") != NULL)
-	{
-	
-		token = (strtok(line," "));
+	{	
+		token = (strtok(line, " "));
 		while(token != NULL)
 		{
-		integerValue = atoi(token);
-		push(integerValue);
-		token = strtok(NULL, "");
-	
+		 if (strcmp(token, "push") != 0) {
+                    integerValue = atoi(token);
+                    push(integerValue);
+                }
+                token = strtok(NULL, " ");
 		}
+	
 	}
 	else if(strstr(line, "pall") != NULL)
 	{
