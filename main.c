@@ -42,7 +42,15 @@ int main(int argc, char *argv[])
 		{
 		 if (strcmp(token, "push") != 0) {
                     integerValue = atoi(token);
+		    if(isInteger(integerValue))
+		    {
                     push(integerValue);
+		    }
+		    else
+		    {
+			    fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+			    exit(EXIT_FAILURE);
+		    }
                 }
                 token = strtok(NULL, " ");
 		}
@@ -54,11 +62,12 @@ int main(int argc, char *argv[])
 	}
 	else if(strstr(line,"pont") != NULL)
 	{
-			
+		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	else 
 	{
-		printf("L<%ld>: unknown instruction <opcode>\n",line_number);
+		printf("L<%d>: unknown instruction <opcode>\n",line_number);
 	        exit(EXIT_FAILURE);
 	}
 	line_number++;
