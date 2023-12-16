@@ -52,13 +52,14 @@ int main(int argc, char *argv[])
 	{
 		pall();
 	}
-	else if(strstr(line,"pint") != NULL)
+	else if(strstr(line,"pont") != NULL)
 	{
-	
+			
 	}
 	else 
 	{
-		printf("wrong opcode");
+		printf("L<%ld>: unknown instruction <opcode>\n",line_number);
+	        exit(EXIT_FAILURE);
 	}
 	line_number++;
     }
