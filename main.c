@@ -7,7 +7,8 @@
  * */
 
 int main(int argc, char *argv[])
-{
+{	
+    ssize_t opcode;	
     unsigned int line_number;
     FILE *file;
     char *line;
@@ -26,16 +27,28 @@ int main(int argc, char *argv[])
             fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
             exit(EXIT_FAILURE);
     }
-
+    
     line = NULL;
     len = 0;
     line_number = 0;
 
-    while (getline(&line, &len, file) != -1)
+    while ((opcode = getline(&line, &len, file)) != -1)
     {
         line_number++;
+	if(strstr(line, "push") != NULL)
+	{
+		push(3);
+	}
+	else if(strstr(line, "pall") != NULL)
+	{
+		pall();
+	}
+	else 
+	{
+		printf("wrong opcode");
+	}
     }
-
+    
     free(line);
     fclose(file);
 
