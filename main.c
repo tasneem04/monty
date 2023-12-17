@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 		{
 		 if (strcmp(token, "push") != 0) {
                     integerValue = atoi(token);
-		    if(isdigit(integerValue) == 0)
+		    if(isdigit(integerValue || argc < 1) == 0)
 		    {
                     push(integerValue);
 		    }
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	}
 	else 
 	{
-		fprintf(stderr,"L<%d>: unknown instruction <%lu>\n",line_number,opcode);
+		fprintf(stderr,"L<%d>: unknown instruction <%s>\n",line_number,line);
 	        exit(EXIT_FAILURE);
 	}
 	line_number++;
