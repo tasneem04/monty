@@ -1,4 +1,4 @@
-pushe 1$
-poshe 2$
+push 1$
+posh 2$
 pushw 3$
 pall$

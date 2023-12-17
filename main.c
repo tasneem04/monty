@@ -36,16 +36,17 @@ int main(int argc, char *argv[])
 
     while ((opcode = (getline(&line, &len, file))) != -1)
     {
-       	if(strstr(line, "push") != NULL)
+       	if(strstr(line, "push ") != NULL)
 	{	
-		token = (strtok(line, " "));
+		
 		while(token != NULL)
 		{
-		 if (strcmp(token, "push") != 0) {
+		 if (strcmp(token, "push ") == 0) 
+		 {
                     integerValue = atoi(token);
-		    if(isdigit(integerValue || argc < 1) == 0)
+		    if(isdigit(integerValue || argc > 1) == 0)
 		    {
-                    push(integerValue);
+			    push(integerValue);
 		    }
 		    else
 		    {
@@ -53,7 +54,7 @@ int main(int argc, char *argv[])
 			    exit(EXIT_FAILURE);
 		    }
                 }
-                token = strtok(NULL, " ");
+		 token = strtok(NULL, " ");
 		}
 	
 	}
@@ -61,7 +62,7 @@ int main(int argc, char *argv[])
 	{
 		pall();
 	}
-	else if(strstr(line,"pont") != NULL)
+	else if(strstr(line,"pint") != NULL)
 	{
 		fprintf(stderr, "L<%d>: can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
