@@ -7,7 +7,8 @@
  * */
 
 int main(int argc, char *argv[])
-{	
+{
+    ssize_t opcode;	
     int integerValue;
     unsigned int line_number;
     FILE *file;
@@ -33,7 +34,7 @@ int main(int argc, char *argv[])
     len = 0;
     line_number = 0;
 
-    while ((getline(&line, &len, file)) != -1)
+    while ((opcode = (getline(&line, &len, file))) != -1)
     {
        	if(strstr(line, "push") != NULL)
 	{	
@@ -62,12 +63,12 @@ int main(int argc, char *argv[])
 	}
 	else if(strstr(line,"pont") != NULL)
 	{
-		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
+		fprintf(stderr, "L<%d>: can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else 
 	{
-		printf("L<%d>: unknown instruction <opcode>\n",line_number);
+		fprintf(stderr,"L<%d>: unknown instruction <%lu>\n",line_number,opcode);
 	        exit(EXIT_FAILURE);
 	}
 	line_number++;
