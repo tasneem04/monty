@@ -36,12 +36,12 @@ int main(int argc, char *argv[])
 
     while ((opcode = (getline(&line, &len, file))) != -1)
     {
-       	if(strstr(line, "push ") != NULL)
-	{	
-		
+	    token = (strtok(line, " "));
+	    if(strcmp(token, "push") == 0)
+	    {	
 		while(token != NULL)
 		{
-		 if (strcmp(token, "push ") == 0) 
+		 if (strcmp(token, "push") == 0) 
 		 {
                     integerValue = atoi(token);
 		    if(isdigit(integerValue || argc > 1) == 0)
@@ -56,8 +56,7 @@ int main(int argc, char *argv[])
                 }
 		 token = strtok(NULL, " ");
 		}
-	
-	}
+	    }
 	else if(strstr(line, "pall") != NULL)
 	{
 		pall();
