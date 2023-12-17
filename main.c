@@ -37,12 +37,10 @@ int main(int argc, char *argv[])
     while ((opcode = (getline(&line, &len, file))) != -1)
     {
 	    token = (strtok(line, " "));
-	    if(strcmp(token, "push") == 0)
-	    {	
-		while(token != NULL)
-		{
-		 if (strcmp(token, "push") == 0) 
-		 {
+	    while(token != NULL)
+	    {	printf("%s\n",line);
+		    if(strcmp(line, "push") == 0)
+		    {
                     integerValue = atoi(token);
 		    if(isdigit(integerValue || argc > 1) == 0)
 		    {
@@ -53,25 +51,26 @@ int main(int argc, char *argv[])
 			    fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
 			    exit(EXIT_FAILURE);
 		    }
-                }
-		 token = strtok(NULL, " ");
-		}
+                
+		    }
+		    else if(strstr(line, "pall") != NULL)
+	    	    {
+			    pall();
+		    }
+		   else if(strstr(line,"pint") != NULL)
+		   {
+			   fprintf(stderr, "L<%d>: can't pint, stack empty", line_number);
+			   exit(EXIT_FAILURE);
+		   }
+		    else 
+		    {
+			    fprintf(stderr,"L<%d>: unknown instruction <%s>\n",line_number,line);
+			    exit(EXIT_FAILURE);
+		    }
+		    token = strtok(NULL, " ");
 	    }
-	else if(strstr(line, "pall") != NULL)
-	{
-		pall();
-	}
-	else if(strstr(line,"pint") != NULL)
-	{
-		fprintf(stderr, "L<%d>: can't pint, stack empty", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else 
-	{
-		fprintf(stderr,"L<%d>: unknown instruction <%s>\n",line_number,line);
-	        exit(EXIT_FAILURE);
-	}
 	line_number++;
+	    
     }
     
     free(line);
